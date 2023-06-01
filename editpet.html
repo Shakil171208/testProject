@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Pet</title>
+    <link rel="stylesheet" href="pet rescuer.css" />
+    <script src="utils.js"></script>
+    <script src="findpet.js"></script>  
+  </head>
+  <body>
+    <h1>Edit Pet Form</h1>
+    <form id="petRescuerForm">
+      <label for="petName">Pet Name:</label>
+      <input type="text" id="petName" required /><br />
+
+      <label for="petType">Pet Type:</label>
+      <input type="text" id="petType" required /><br />
+
+      <label for="petBreed">Pet Breed:</label>
+      <input type="text" id="petBreed" required /><br />
+
+      <label for="petAge">Pet Age:</label>
+      <input type="number" id="petAge" required /><br />
+
+      <label for="petDescription">Pet Description:</label>
+      <textarea id="petDescription" required></textarea><br />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

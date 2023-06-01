@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken"></script> -->
+    <script src="login.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-image">
+            <img src="images\pet1.avif" alt="Login Image">
+        </div>
+        <div class="right-form">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <div class="form-row">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+
+                <button type="submit">Login</button>
+                <p id="loginMessage">
+                    Haven't register yet? <a href="signup.html">Sign Up!</a>
+                </p>
+            </form>
+            <p id="successMessage"></p>
+        </div>
+    </div>
+</body>
+</html>

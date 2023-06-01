@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="signup.css" />
+    <script src="signup.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-image">
+        <img src="images\pet1.avif" alt="Image" />
+      </div>
+      <div class="right-form">
+        <h1>Signup</h1>
+        <form id="signupForm">
+          <div class="form-row">
+            <div class="form-column">
+              <label for="firstName">First Name:</label>
+              <input type="text" id="firstName" required />
+            </div>
+            <div class="form-column">
+              <label for="lastName">Last Name:</label>
+              <input type="text" id="lastName" required />
+            </div>
+          </div>
+
+          <label for="username">Username:</label>
+          <input type="text" id="username" required /><br />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" required /><br />
+
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="text" id="phoneNumber" required /><br />
+
+          <!-- <label class="gender-label">Gender:</label> -->
+          <div class="form-row">
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" required />
+            <label for="male">Male</label>
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="female"
+              required
+            />
+            <label for="female">Female</label>
+            <input
+              type="radio"
+              id="other"
+              name="gender"
+              value="other"
+              required
+            />
+            <label for="other">Other</label>
+          </div>
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" required /><br />
+
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" required /><br />
+
+          <div class="checkbox-label">
+            <input type="checkbox" id="terms" required />
+            <label for="terms">I agree with the terms and conditions</label>
+          </div>
+
+          <button type="submit">Signup</button>
+          <p id="loginMessage">
+            Already have an account? <a href="login.html">Login!</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

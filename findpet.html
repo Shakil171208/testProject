@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Find a Pet</title>
+    <link rel="stylesheet" type="text/css" href="findpet.css" />
+    <script src="findpet.js"></script>
+    <!-- <script src="pagination.js"></script> -->
+    <script src="utils.js"></script>
+  </head>
+  <body>
+    <h1>Find a Pet</h1>
+
+    <div id="petList"></div>
+    <!-- <div id="pagination"></div>
+    <div class="action-buttons">
+      <button id="deleteSelectedButton" onclick="deleteSelectedPets()">Delete Selected</button>
+    </div>     -->
+
+    <!-- Modal -->
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contact Information</h2>
+        <p><strong>Username:</strong> <span id="modalUsername"></span></p>
+        <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+        <p>
+          <strong>Phone Number:</strong> <span id="modalPhoneNumber"></span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close-edit">&times;</span>
+        <h2>Edit Pet Data</h2>
+        <form id="editForm">
+          <label for="editPetName">Pet Name:</label>
+          <input type="text" id="editPetName" required /><br />
+
+          <label for="editPetType">Pet Type:</label>
+          <input type="text" id="editPetType" required /><br />
+
+          <label for="editPetBreed">Pet Breed:</label>
+          <input type="text" id="editPetBreed" required /><br />
+
+          <label for="editPetAge">Pet Age:</label>
+          <input type="number" id="editPetAge" required /><br />
+
+          <label for="editPetDescription">Pet Description:</label>
+          <textarea id="editPetDescription" required></textarea><br />
+
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

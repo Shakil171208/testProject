@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pet Adoption Management</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var logo = document.querySelector(".logo img");
+        var logoUrl = localStorage.getItem("logoUrl");
+        if (logoUrl) {
+          logo.src = logoUrl;
+        } else {
+          logoUrl = "images/pet.png"; // Update the path if necessary
+          localStorage.setItem("logoUrl", logoUrl);
+          logo.src = logoUrl;
+        }
+      });
+
+      function checkLogin() {
+        var token = localStorage.getItem("token");
+        if (!token) {
+          alert("You need to login first!");
+          window.location.href = "login.html";
+        } else {
+          window.location.href = "pet rescuer.html";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <nav>
+      <div class="navbar">
+        <a href="#" class="logo">
+          <img src="D:\Pet Adoption Management\images\pet.png" alt="Logo" />
+          <span class="logo-text">Pet Adoption Hub</span>
+        </a>
+        <div class="navbar-left">
+          <a href="#" onclick="checkLogin()">Pet Rescuer</a>
+          <a href="findpet.html">Find a Pet</a>
+          <a href="#">How it Works</a>
+          <a href="#">Furry Stories</a>
+        </div>
+        <div class="navbar-right">
+          <a href="signup.html" class="signup-button">Sign Up</a>
+          <a href="login.html" class="login-button">Log In</a>
+        </div>
+      </div>
+    </nav>
+    <div class="header-container">
+      <h1>Welcome to Pet Adoption Hub</h1>
+    </div>
+    <div class="container">
+      <div class="content left">
+        <img src="images\pet1.avif" alt="Image" />
+      </div>
+      <div class="content right">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          dignissim lectus vel nulla placerat, nec dignissim nisl pellentesque.
+          Proin eget purus vitae ex commodo volutpat a in elit.
+        </p>
+        <p>
+          Sed nec sollicitudin nibh, sit amet elementum urna. Duis euismod
+          pharetra ante nec venenatis. Integer pretium turpis a sagittis tempor.
+          Mauris pharetra dictum ante, eu laoreet erat eleifend sed.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <p>&copy; 2023 Pet Adoption Hub. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

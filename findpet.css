@@ -1,0 +1,184 @@
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f8f8f8;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Page title styles */
+h1 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Pet list container styles */
+#petList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Pet item styles */
+.pet-item {
+  width: calc(50% - 20px);
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.pet-item h3 {
+  font-size: 24px;
+  margin: 0;
+  color: #333;
+}
+
+.pet-item p {
+  margin: 10px 0;
+  color: #777;
+}
+
+/* Edit and delete buttons styles */
+.pet-item button {
+  margin-top: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.pet-item button:hover {
+  background-color: #555;
+}
+
+/* Pagination container styles */
+#pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Page link styles */
+.page-link {
+  margin: 0 10px;
+  color: #333;
+  cursor: pointer;
+}
+
+.page-link:hover {
+  text-decoration: underline;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  max-width: 600px;
+}
+
+.close,
+.close-edit {
+  color: #888;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close-edit:hover {
+  color: #000;
+}
+
+/* Other styles */
+button {
+  cursor: pointer;
+}
+
+/* Contact modal styles */
+#contactModal {
+  display: none;
+}
+
+#contactModal .modal-content {
+  max-width: 400px;
+}
+
+#contactModal h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#contactModal p {
+  margin-bottom: 10px;
+  color: #777;
+}
+
+/* Edit modal styles */
+#editModal {
+  display: none;
+}
+
+#editModal .modal-content {
+  max-width: 500px;
+}
+
+#editModal h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#editModal label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+#editModal input[type="text"],
+#editModal input[type="number"],
+#editModal textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#editModal button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+}
+
+#editModal button[type="submit"]:hover {
+  background-color: #555;
+}
+
+
