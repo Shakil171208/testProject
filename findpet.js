@@ -27,21 +27,20 @@ window.addEventListener("DOMContentLoaded", function () {
     petDescription.textContent = "Description: " + petInfo.petDescription;
 
     var editButton = document.createElement("button");
-editButton.innerHTML = '<i class="material-icons">edit</i>';
-editButton.classList.add("icon-button");
-editButton.addEventListener(
-  "click",
-  createEditButtonClickHandler(petInfo.token)
-);
+    editButton.innerHTML = '<i class="material-icons">edit</i>';
+    editButton.classList.add("icon-button");
+    editButton.addEventListener(
+      "click",
+      createEditButtonClickHandler(petInfo.id)
+    );
 
-
-var deleteButton = document.createElement("button");
-deleteButton.innerHTML = '<i class="material-icons">delete</i>';
-deleteButton.classList.add("icon-button");
-deleteButton.addEventListener(
-  "click",
-  createDeleteButtonClickHandler(petInfo.token)
-);
+    var deleteButton = document.createElement("button");
+    deleteButton.innerHTML = '<i class="material-icons">delete</i>';
+    deleteButton.classList.add("icon-button");
+    deleteButton.addEventListener(
+      "click",
+      createDeleteButtonClickHandler(petInfo.id)
+    );
 
     var contactButton = document.createElement("button");
     contactButton.textContent = "Contact Me";
@@ -69,93 +68,85 @@ deleteButton.addEventListener(
   }
 });
 
-function createEditButtonClickHandler(token) {
+function createEditButtonClickHandler(id) {
   return function () {
     var currentUserToken = localStorage.getItem("token");
-    if (token === currentUserToken) {
-      var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
+    var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
 
-      // Find the pet info to be edited
-      var petInfo = petInfoList.find(function (pet) {
-        return pet.token === token;
+    // Find the pet info to be edited
+    var petInfo = petInfoList.find(function (pet) {
+      return pet.id === id && pet.token === currentUserToken;
+    });
+
+    if (petInfo) {
+      // Open a modal with a form for editing the pet data
+      var modal = document.getElementById("editModal");
+      var editForm = document.getElementById("editForm");
+
+      // Pre-fill the form fields with the existing pet data
+      editForm.elements.editPetName.value = petInfo.petName;
+      editForm.elements.editPetType.value = petInfo.petType;
+      editForm.elements.editPetBreed.value = petInfo.petBreed;
+      editForm.elements.editPetAge.value = petInfo.petAge;
+      editForm.elements.editPetDescription.value = petInfo.petDescription;
+
+      // Submit handler for the edit form
+      editForm.onsubmit = function (event) {
+        event.preventDefault();
+
+        // Update the pet data with the edited values
+        petInfo.petName = editForm.elements.editPetName.value;
+        petInfo.petType = editForm.elements.editPetType.value;
+        petInfo.petBreed = editForm.elements.editPetBreed.value;
+        petInfo.petAge = editForm.elements.editPetAge.value;
+        petInfo.petDescription = editForm.elements.editPetDescription.value;
+
+        // Save the updated pet info in local storage
+        localStorage.setItem("petInfoList", JSON.stringify(petInfoList));
+
+        // Close the modal
+        modal.style.display = "none";
+
+        // Reload the page to display the updated pet info
+        location.reload();
+      };
+
+      // Show the edit modal
+      modal.style.display = "block";
+
+      // Close modal when clicking the close button
+      var closeModal = modal.querySelector(".close-edit");
+      closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
       });
-
-      if (petInfo) {
-        // Open a modal with a form for editing the pet data
-        var modal = document.getElementById("editModal");
-        var editForm = document.getElementById("editForm");
-
-        // Pre-fill the form fields with the existing pet data
-        editForm.elements.editPetName.value = petInfo.petName;
-        editForm.elements.editPetType.value = petInfo.petType;
-        editForm.elements.editPetBreed.value = petInfo.petBreed;
-        editForm.elements.editPetAge.value = petInfo.petAge;
-        editForm.elements.editPetDescription.value = petInfo.petDescription;
-
-        // Submit handler for the edit form
-        editForm.onsubmit = function (event) {
-          event.preventDefault();
-
-          // Update the pet data with the edited values
-          petInfo.petName = editForm.elements.editPetName.value;
-          petInfo.petType = editForm.elements.editPetType.value;
-          petInfo.petBreed = editForm.elements.editPetBreed.value;
-          petInfo.petAge = editForm.elements.editPetAge.value;
-          petInfo.petDescription = editForm.elements.editPetDescription.value;
-
-          // Save the updated pet info in local storage
-          localStorage.setItem("petInfoList", JSON.stringify(petInfoList));
-
-          // Close the modal
-          modal.style.display = "none";
-
-          // Reload the page to display the updated pet info
-          location.reload();
-        };
-
-        // Show the edit modal
-        modal.style.display = "block";
-
-        // Close modal when clicking the close button
-        var closeModal = modal.querySelector(".close-edit");
-        closeModal.addEventListener("click", function () {
-          modal.style.display = "none";
-        });
-      } else {
-        alert("Pet information not found.");
-      }
     } else {
-      alert("You can only edit your own pet data.");
+      alert("Pet information not found.");
     }
   };
 }
 
 // Create a click handler for the delete button
-function createDeleteButtonClickHandler(token) {
+function createDeleteButtonClickHandler(id) {
   return function () {
     var currentUserToken = localStorage.getItem("token");
-    if (token === currentUserToken) {
-      var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
+    var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
 
-      // Find the index of the pet info to be deleted
-      var petIndex = petInfoList.findIndex(function (pet) {
-        return pet.token === token;
-      });
+    // Find the index of the pet info to be deleted
+    var petIndex = petInfoList.findIndex(function (pet) {
+      return pet.id === id && pet.token === currentUserToken;
+    });
 
-      if (petIndex !== -1) {
-        // Remove the pet info from the list
-        petInfoList.splice(petIndex, 1);
+    if (petIndex !== -1) {
+      // Remove the pet info from the list
+      petInfoList.splice(petIndex, 1);
 
-        // Save the updated pet info in local storage
-        localStorage.setItem("petInfoList", JSON.stringify(petInfoList));
+      // Save the updated pet info in local storage
+      localStorage.setItem("petInfoList", JSON.stringify(petInfoList));
 
-        // Reload the page to reflect the changes
-        location.reload();
-      } else {
-        alert("Pet information not found.");
-      }
+      // Reload the page to reflect the changes
+      location.reload();
     } else {
-      alert("You can only delete your own pet data.");
+      alert("Pet information not found.");
     }
   };
 }
