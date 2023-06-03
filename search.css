@@ -1,0 +1,30 @@
+#searchSection {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  #searchSection h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #searchSection label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  #searchSection input[type="text"] {
+    padding: 5px;
+    width: 200px;
+    margin-bottom: 10px;
+  }
+  
+  #searchButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  

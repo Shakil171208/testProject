@@ -1,81 +1,125 @@
-window.addEventListener("DOMContentLoaded", function () {
-  var currentUserToken = localStorage.getItem("token");
-  var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
+// Retrieve the current user's token from local storage
+var currentUserToken = localStorage.getItem("token");
 
-  var petListContainer = document.getElementById("petList");
-  petListContainer.innerHTML = "";
+// Retrieve the pet info list from local storage
+var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
 
-  for (var i = 0; i < petInfoList.length; i++) {
-    var petInfo = petInfoList[i];
+// Retrieve the contact info list from local storage
+var contactInfoList = JSON.parse(localStorage.getItem("contactInfoList")) || [];
 
-    var petItem = document.createElement("div");
-    petItem.className = "pet-item";
+// Get the pet list container element
+var petListContainer = document.getElementById("petListContainer");
 
-    var petName = document.createElement("h3");
-    petName.textContent = petInfo.petName;
+// Loop through the pet info list and display each pet's information
+petInfoList.forEach(function (petInfo) {
+  // Create a new pet item element
+  var petItem = document.createElement("div");
+  petItem.classList.add("pet-item");
 
-    var petType = document.createElement("p");
-    petType.textContent = "Type: " + petInfo.petType;
+  // Create elements to display the pet information
+  var petName = document.createElement("h2");
+  petName.textContent = "Name: " + petInfo.petName;
 
-    var petBreed = document.createElement("p");
-    petBreed.textContent = "Breed: " + petInfo.petBreed;
+  var petType = document.createElement("p");
+  petType.textContent = "Type: " + petInfo.petType;
 
-    var petAge = document.createElement("p");
-    petAge.textContent = "Age: " + petInfo.petAge;
+  var petBreed = document.createElement("p");
+  petBreed.textContent = "Breed: " + petInfo.petBreed;
 
-    var petDescription = document.createElement("p");
-    petDescription.textContent = "Description: " + petInfo.petDescription;
+  var petAge = document.createElement("p");
+  petAge.textContent = "Age: " + petInfo.petAge;
 
-    var editButton = document.createElement("button");
-    editButton.innerHTML = '<i class="material-icons">edit</i>';
-    editButton.classList.add("icon-button");
-    editButton.addEventListener(
-      "click",
-      createEditButtonClickHandler(petInfo.id)
-    );
+  var petDescription = document.createElement("p");
+  petDescription.textContent = "Description: " + petInfo.petDescription;
 
-    var deleteButton = document.createElement("button");
-    deleteButton.innerHTML = '<i class="material-icons">delete</i>';
-    deleteButton.classList.add("icon-button");
-    deleteButton.addEventListener(
-      "click",
-      createDeleteButtonClickHandler(petInfo.id)
-    );
+  // Create an edit button for the pet item
+  var editButton = document.createElement("button");
+  editButton.innerHTML = 'Edit';
+  editButton.classList.add("icon-button");
+  editButton.addEventListener("click", createEditButtonClickHandler(petInfo.id));
 
-    var contactButton = document.createElement("button");
-    contactButton.textContent = "Contact Me";
-    contactButton.addEventListener(
-      "click",
-      createContactButtonClickHandler(petInfo.token)
-    );
+  // Create a delete button for the pet item
+  var deleteButton = document.createElement("button");
+  deleteButton.innerHTML = 'Delete';
+  deleteButton.classList.add("icon-button");
+  deleteButton.addEventListener("click", createDeleteButtonClickHandler(petInfo.id));
 
-    // Hide edit and delete buttons if the user is not the owner of the pet
-    if (petInfo.token !== currentUserToken) {
-      editButton.style.display = "none";
-      deleteButton.style.display = "none";
-    }
+  // Create a contact button for the pet item
+  var contactButton = document.createElement("button");
+  contactButton.textContent = "Contact Me";
+  contactButton.addEventListener("click", createContactButtonClickHandler(petInfo.token));
 
-    petItem.appendChild(petName);
-    petItem.appendChild(petType);
-    petItem.appendChild(petBreed);
-    petItem.appendChild(petAge);
-    petItem.appendChild(petDescription);
-    petItem.appendChild(editButton);
-    petItem.appendChild(deleteButton);
-    petItem.appendChild(contactButton);
-
-    petListContainer.appendChild(petItem);
+  // Hide edit and delete buttons if the user is not the owner of the pet
+  if (petInfo.token !== currentUserToken) {
+    editButton.style.display = "none";
+    deleteButton.style.display = "none";
   }
+
+  // Create a checkbox for selecting the pet item
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.classList.add("checkbox");
+  checkbox.value = petInfo.id;
+
+  // Append all the elements to the pet item container
+  if (petInfo.token === currentUserToken) {
+    petItem.appendChild(checkbox);
+  }
+  petItem.appendChild(petName);
+  petItem.appendChild(petType);
+  petItem.appendChild(petBreed);
+  petItem.appendChild(petAge);
+  petItem.appendChild(petDescription);
+  petItem.appendChild(editButton);
+  petItem.appendChild(deleteButton);
+  petItem.appendChild(contactButton);
+
+  // Append the pet item to the pet list container
+  petListContainer.appendChild(petItem);
 });
 
-function createEditButtonClickHandler(id) {
-  return function () {
-    var currentUserToken = localStorage.getItem("token");
-    var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
+// Add an event listener to the "Delete Selected" button
+var deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
+deleteSelectedBtn.addEventListener("click", deleteSelectedPets);
 
-    // Find the pet info to be edited
+// Function to handle the "Delete Selected" button click
+function deleteSelectedPets() {
+  var checkboxes = document.getElementsByClassName("checkbox");
+  var selectedPetIds = [];
+
+  // Loop through the checkboxes to find the selected pets
+  for (var i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      selectedPetIds.push(parseInt(checkboxes[i].value));
+    }
+  }
+
+  if (selectedPetIds.length === 0) {
+    alert("Please select at least one pet to delete.");
+    return;
+  }
+
+  var updatedPetInfoList = petInfoList.filter(function (pet) {
+    return !selectedPetIds.includes(pet.id) || pet.token !== currentUserToken;
+  });
+
+  if (updatedPetInfoList.length === petInfoList.length) {
+    alert("You can only delete your own pet data.");
+    return;
+  }
+
+  // Save the updated pet info in local storage
+  localStorage.setItem("petInfoList", JSON.stringify(updatedPetInfoList));
+
+  // Reload the page to reflect the changes
+  location.reload();
+}
+
+// Function to create the edit button click handler
+function createEditButtonClickHandler(petId) {
+  return function () {
     var petInfo = petInfoList.find(function (pet) {
-      return pet.id === id && pet.token === currentUserToken;
+      return pet.id === petId;
     });
 
     if (petInfo) {
@@ -125,18 +169,21 @@ function createEditButtonClickHandler(id) {
   };
 }
 
-// Create a click handler for the delete button
-function createDeleteButtonClickHandler(id) {
+// Function to create the delete button click handler
+function createDeleteButtonClickHandler(petId) {
   return function () {
-    var currentUserToken = localStorage.getItem("token");
-    var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
-
-    // Find the index of the pet info to be deleted
     var petIndex = petInfoList.findIndex(function (pet) {
-      return pet.id === id && pet.token === currentUserToken;
+      return pet.id === petId;
     });
 
     if (petIndex !== -1) {
+      var petInfo = petInfoList[petIndex];
+
+      if (petInfo.token !== currentUserToken) {
+        alert("You can only delete your own pet data.");
+        return;
+      }
+
       // Remove the pet info from the list
       petInfoList.splice(petIndex, 1);
 

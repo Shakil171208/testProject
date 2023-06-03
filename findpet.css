@@ -1,7 +1,122 @@
-/* Body styles */
+/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styles */
+nav {
+  background-color: #f8f8f8;
+  padding: 15px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  /* pointer-events: none; */
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  /* pointer-events: none; */
+}
+
+.logo-text {
+  font-weight: bold;
+  font-size: 22px;
+  /* pointer-events: none; */
+}
+
+.navbar-left {
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.navbar-right {
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.navbar a {
+  margin-right: 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover:not(.logo):not(.logo-text) {
+  color: #f56a6a;
+}
+
+/* Content Styles */
+.container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Example styles for the content section */
+.container h1 {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.container p {
+  line-height: 1.5;
+}
+
+.container a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f56a6a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.container a.button:hover {
+  background-color: #9598f0;
+}
+
+/* Additional styles for Sign Up and Log In links */
+.navbar-right a.signup-button {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.navbar-right a.login-button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.navbar-right a.signup-button:hover,
+.navbar-right a.login-button:hover {
+  opacity: 0.8;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
   padding: 20px;
   background-color: #f8f8f8;
   align-items: center;
@@ -14,24 +129,30 @@ h1 {
   text-align: center;
   margin-bottom: 30px;
   color: #333;
+  justify-content: center;
 }
 
 /* Pet list container styles */
-#petList {
+#petListContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 30px;
 }
 
 /* Pet item styles */
 .pet-item {
-  width: calc(50% - 20px);
-  background-color: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  align-items: center;
+  width: 500px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: relative;
+}
+
+.checkbox {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .pet-item h3 {
@@ -57,24 +178,6 @@ h1 {
 
 .pet-item button:hover {
   background-color: #555;
-}
-
-/* Pagination container styles */
-#pagination {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-/* Page link styles */
-.page-link {
-  margin: 0 10px;
-  color: #333;
-  cursor: pointer;
-}
-
-.page-link:hover {
-  text-decoration: underline;
 }
 
 /* Modal styles */
@@ -180,5 +283,41 @@ button {
 #editModal button[type="submit"]:hover {
   background-color: #555;
 }
+
+/* Styling for the Delete Selected button */
+#deleteSelectedBtn {
+  position: sticky;
+  bottom: 649px;
+  left: 1171px; /* Adjust right value as needed */
+  padding: 8px 16px;
+  background-color: #3d3b3b;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  /* Pet item styles */
+  .pet-item {
+    width: 100%;
+  }
+
+  /* Styling for the Delete Selected button */
+  #deleteSelectedBtn {
+    position: sticky;
+    bottom: auto;
+    left: 171px;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
