@@ -168,6 +168,9 @@ h1 {
 
 /* Edit and delete buttons styles */
 .pet-item button {
+  display: inline-block;
+  flex-wrap: nowrap;
+  margin-right: 10px;
   margin-top: 10px;
   background-color: #333;
   color: #fff;
