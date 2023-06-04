@@ -1,3 +1,6 @@
+// Define a global variable to store the filtered pets
+var filteredPets = [];
+
 // Function to perform the search based on pet type and pet age
 function performSearch() {
   // Get the search input values
@@ -6,17 +9,17 @@ function performSearch() {
 
   // Check if both search fields are empty
   if (typeInput === "" && ageInput === "") {
-    return; // Do nothing and exit the function
+    filteredPets = petInfoList; // Use the original pet info list
+  } else {
+    // Filter the pet info list based on the search criteria
+    filteredPets = petInfoList.filter(function (petInfo) {
+      var petType = petInfo.petType.toLowerCase();
+      var petAge = petInfo.petAge.toString().toLowerCase();
+
+      // Check if the pet type and age match the search inputs
+      return petType.includes(typeInput) && petAge.includes(ageInput);
+    });
   }
-
-  // Filter the pet info list based on the search criteria
-  var filteredPets = petInfoList.filter(function (petInfo) {
-    var petType = petInfo.petType.toLowerCase();
-    var petAge = petInfo.petAge.toString().toLowerCase();
-
-    // Check if the pet type and age match the search inputs
-    return petType.includes(typeInput) && petAge.includes(ageInput);
-  });
 
   // Clear the pet list container
   petListContainer.innerHTML = "";
@@ -101,6 +104,7 @@ function performSearch() {
   // Update the pagination links after performing the search
   var totalPages = Math.ceil(filteredPets.length / petsPerPage);
   createPaginationLinks(totalPages);
+  displayPage(1);
 }
 
 // Add an event listener to the search button

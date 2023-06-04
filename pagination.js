@@ -146,8 +146,8 @@ function updatePaginationLinks() {
   }
 }
 
-
 // Function to save the current page value in local storage
 function saveCurrentPage() {
   localStorage.setItem("currentPage", currentPage);
 }
+
