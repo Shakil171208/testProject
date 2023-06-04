@@ -78,6 +78,10 @@ function performSearch() {
       deleteButton.style.display = "none";
     }
 
+    if(petInfo.token == currentUserToken){
+      contactButton.style.display = "none";
+    }
+
     // Create a checkbox for selecting the pet item
     var checkbox = document.createElement("input");
     checkbox.type = "checkbox";
