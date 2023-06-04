@@ -4,6 +4,11 @@ function performSearch() {
   var typeInput = document.getElementById("searchPetType").value.toLowerCase();
   var ageInput = document.getElementById("searchPetAge").value.toLowerCase();
 
+  // Check if both search fields are empty
+  if (typeInput === "" && ageInput === "") {
+    return; // Do nothing and exit the function
+  }
+
   // Filter the pet info list based on the search criteria
   var filteredPets = petInfoList.filter(function (petInfo) {
     var petType = petInfo.petType.toLowerCase();
@@ -42,18 +47,27 @@ function performSearch() {
     var editButton = document.createElement("button");
     editButton.innerHTML = "Edit";
     editButton.classList.add("icon-button");
-    editButton.addEventListener("click", createEditButtonClickHandler(petInfo.id));
+    editButton.addEventListener(
+      "click",
+      createEditButtonClickHandler(petInfo.id)
+    );
 
     // Create a delete button for the pet item
     var deleteButton = document.createElement("button");
     deleteButton.innerHTML = "Delete";
     deleteButton.classList.add("icon-button");
-    deleteButton.addEventListener("click", createDeleteButtonClickHandler(petInfo.id));
+    deleteButton.addEventListener(
+      "click",
+      createDeleteButtonClickHandler(petInfo.id)
+    );
 
     // Create a contact button for the pet item
     var contactButton = document.createElement("button");
     contactButton.textContent = "Contact Me";
-    contactButton.addEventListener("click", createContactButtonClickHandler(petInfo.token));
+    contactButton.addEventListener(
+      "click",
+      createContactButtonClickHandler(petInfo.token)
+    );
 
     // Hide edit and delete buttons if the user is not the owner of the pet
     if (petInfo.token !== currentUserToken) {

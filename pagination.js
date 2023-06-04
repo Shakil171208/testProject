@@ -46,7 +46,7 @@ function displayPage(page) {
 }
 
 // Function to create the pagination links
-function createPaginationLinks(totalPages) {
+function createPaginationLinks() {
   // Clear the existing pagination links
   paginationContainer.innerHTML = "";
 
@@ -145,6 +145,7 @@ function updatePaginationLinks() {
     }
   }
 }
+
 
 // Function to save the current page value in local storage
 function saveCurrentPage() {
