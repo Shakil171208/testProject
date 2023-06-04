@@ -7,12 +7,12 @@ var paginationContainer = document.getElementById("paginationContainer");
 // Define the number of pets per page
 var petsPerPage = 2;
 
-// Calculate the total number of pages
-var totalPets = petListContainer.children.length;
-var totalPages = Math.ceil(totalPets / petsPerPage);
-
 // Initialize the current page
 var currentPage = 1;
+
+// Calculate the total number of pages
+var totalPets = 0;
+var totalPages = 0;
 
 // Retrieve the current page value from local storage
 var storedPage = localStorage.getItem("currentPage");
@@ -32,19 +32,29 @@ function displayPage(page) {
   var startIndex = (page - 1) * petsPerPage;
   var endIndex = startIndex + petsPerPage - 1;
 
-  // Iterate over all the pet items and show/hide them based on the page
-  for (var i = 0; i < totalPets; i++) {
-    var petItem = petListContainer.children[i];
-    if (i >= startIndex && i <= endIndex) {
+  // Convert the children collection to an array
+  var petItems = Array.from(petListContainer.children);
+
+  // Loop through the pet items and update their display property
+  petItems.forEach(function (petItem, index) {
+    if (index >= startIndex && index <= endIndex) {
       petItem.style.display = "block";
     } else {
       petItem.style.display = "none";
     }
-  }
+  });
 }
 
 // Function to create the pagination links
-function createPaginationLinks() {
+function createPaginationLinks(totalPages) {
+  // Clear the existing pagination links
+  paginationContainer.innerHTML = "";
+
+  // Calculate the total number of pets
+  var petItems = Array.from(petListContainer.children);
+  totalPets = petItems.length;
+  totalPages = Math.ceil(totalPets / petsPerPage);
+
   // Create the previous page link
   var previousLink = document.createElement("a");
   previousLink.textContent = "Previous page";
