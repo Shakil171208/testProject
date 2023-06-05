@@ -1,4 +1,3 @@
-// Define a global variable to store the filtered pets
 var filteredPets = [];
 
 // Function to perform the search based on pet type and pet age
@@ -108,7 +107,7 @@ function performSearch() {
   // Update the pagination links after performing the search
   var totalPages = Math.ceil(filteredPets.length / petsPerPage);
   createPaginationLinks(totalPages);
-  displayPage(1);
+  displayPage(currentPage);
 }
 
 // Add an event listener to the search button

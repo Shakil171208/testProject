@@ -20,11 +20,11 @@ if (storedPage) {
   currentPage = parseInt(storedPage);
 }
 
-// Display the initial page
-displayPage(currentPage);
-
 // Create the pagination links
 createPaginationLinks();
+
+// Display the initial page
+displayPage(currentPage);
 
 // Function to display the specified page
 function displayPage(page) {
@@ -43,6 +43,20 @@ function displayPage(page) {
       petItem.style.display = "none";
     }
   });
+
+  // Check if the current page is empty
+  var currentPageItems = petItems.slice(startIndex, endIndex + 1);
+  var isEmptyPage = currentPageItems.every(function (petItem) {
+    return petItem.style.display === "none";
+  });
+
+  // If the current page is empty, navigate to the previous page
+  if (isEmptyPage && currentPage > 1) {
+    currentPage--;
+    displayPage(currentPage);
+    updatePaginationLinks();
+    saveCurrentPage();
+  }
 }
 
 // Function to create the pagination links
@@ -150,4 +164,3 @@ function updatePaginationLinks() {
 function saveCurrentPage() {
   localStorage.setItem("currentPage", currentPage);
 }
-

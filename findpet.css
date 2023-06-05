@@ -7,7 +7,7 @@ body {
 
 /* Navbar Styles */
 nav {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   padding: 15px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -118,7 +118,7 @@ nav {
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   align-items: center;
   justify-content: center;
 }
@@ -144,7 +144,8 @@ h1 {
   width: 500px;
   padding: 10px;
   margin: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #212121;
+  background-color: #ffffffd0;
   border-radius: 5px;
   position: relative;
 }
@@ -159,11 +160,12 @@ h1 {
   font-size: 24px;
   margin: 0;
   color: #333;
+  font: bold;
 }
 
 .pet-item p {
   margin: 10px 0;
-  color: #777;
+  color: #2d2d2d;
 }
 
 /* Edit and delete buttons styles */
