@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   var signupForm = document.getElementById('signupForm');
   signupForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); 
 
     var firstName = document.getElementById('firstName').value;
     var lastName = document.getElementById('lastName').value;

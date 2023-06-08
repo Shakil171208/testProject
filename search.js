@@ -8,7 +8,7 @@ function performSearch() {
 
   // Check if both search fields are empty
   if (typeInput === "" && ageInput === "") {
-    filteredPets = petInfoList; // Use the original pet info list
+    return; // Use the original pet info list
   } else {
     // Filter the pet info list based on the search criteria
     filteredPets = petInfoList.filter(function (petInfo) {
@@ -18,6 +18,19 @@ function performSearch() {
       // Check if the pet type and age match the search inputs
       return petType.includes(typeInput) && petAge.includes(ageInput);
     });
+  }
+
+  // Add an event listener to the "Delete Selected" button
+  var deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
+  deleteSelectedBtn.addEventListener("click", deleteSelectedPets);
+
+  // Update the visibility of pagination links and delete button
+  if (filteredPets.length === 0) {
+    paginationContainer.style.display = "none";
+    deleteSelectedBtn.style.display = "none";
+  } else {
+    paginationContainer.style.display = "block";
+    deleteSelectedBtn.style.display = "block";
   }
 
   // Clear the pet list container
@@ -77,7 +90,7 @@ function performSearch() {
       deleteButton.style.display = "none";
     }
 
-    if(petInfo.token == currentUserToken){
+    if (petInfo.token == currentUserToken) {
       contactButton.style.display = "none";
     }
 
@@ -113,7 +126,7 @@ function performSearch() {
 // Add an event listener to the search button
 var searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", function () {
-  currentPage = 1; // Reset the current page to the first page
-  displayPage(currentPage); // Display the first page of results
   performSearch(); // Perform the search
 });
+
+

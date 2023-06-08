@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Save token to local storage
         localStorage.setItem("token", token);
+        localStorage.setItem("loggedInUsername", user.username);
 
         // Show success message
         var successMessage = document.getElementById("successMessage");
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Redirect to a protected page (e.g., index.html) after a short delay
         setTimeout(function () {
           window.location.href = "index.html";
-        }, 1000); // 2000 milliseconds = 2 seconds
+        }, 1000); 
       } else {
         alert("Invalid username or password");
       }
@@ -50,7 +51,7 @@ function createJWTToken(username) {
   } else {
     // Generate a new token
     var currentToken = localStorage.getItem("currentToken");
-    var token = currentToken ? parseInt(currentToken) + 1 : 1;
+    var token = currentToken ? parseInt(currentToken) : 1;
 
     // Update the current token value in localStorage
     localStorage.setItem("currentToken", token);

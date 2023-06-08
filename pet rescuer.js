@@ -17,7 +17,7 @@ function populateFormFields() {
   var phoneNumberField = document.getElementById('phoneNumber');
 
   // Retrieve the current user's information from local storage or server
-  var currentUser = getCurrentUser(); // Assuming you have a function to retrieve the current user's information
+  var currentUser = getCurrentUser(); 
 
   // Populate the form fields with user information
   if (currentUser) {

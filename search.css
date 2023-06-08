@@ -1,3 +1,16 @@
+/* CSS styles for pagination container */
+#paginationContainer {
+  display: flex; /* Display the pagination links in a flex container */
+  align-items: center; /* Center the pagination links vertically */
+  margin-top: 10px; /* Adjust the margin as needed */
+}
+
+/* CSS styles for page links */
+.page-links a {
+  display: inline-block; /* Display the page links inline */
+  margin: 0 5px; /* Add some spacing between the page links */
+}
+
 #searchSection {
     text-align: center;
     margin-top: 50px;
@@ -29,4 +42,6 @@
     border: none;
     cursor: pointer;
   }
+
+
   

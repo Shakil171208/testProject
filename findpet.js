@@ -34,20 +34,29 @@ petInfoList.forEach(function (petInfo) {
 
   // Create an edit button for the pet item
   var editButton = document.createElement("button");
-  editButton.innerHTML = 'Edit';
+  editButton.innerHTML = "Edit";
   editButton.classList.add("icon-button");
-  editButton.addEventListener("click", createEditButtonClickHandler(petInfo.id));
+  editButton.addEventListener(
+    "click",
+    createEditButtonClickHandler(petInfo.id)
+  );
 
   // Create a delete button for the pet item
   var deleteButton = document.createElement("button");
-  deleteButton.innerHTML = 'Delete';
+  deleteButton.innerHTML = "Delete";
   deleteButton.classList.add("icon-button");
-  deleteButton.addEventListener("click", createDeleteButtonClickHandler(petInfo.id));
+  deleteButton.addEventListener(
+    "click",
+    createDeleteButtonClickHandler(petInfo.id)
+  );
 
   // Create a contact button for the pet item
   var contactButton = document.createElement("button");
   contactButton.textContent = "Contact Me";
-  contactButton.addEventListener("click", createContactButtonClickHandler(petInfo.token));
+  contactButton.addEventListener(
+    "click",
+    createContactButtonClickHandler(petInfo.token)
+  );
 
   // Hide edit and delete buttons if the user is not the owner of the pet
   if (petInfo.token !== currentUserToken) {
@@ -55,7 +64,7 @@ petInfoList.forEach(function (petInfo) {
     deleteButton.style.display = "none";
   }
 
-  if(petInfo.token == currentUserToken){
+  if (petInfo.token == currentUserToken) {
     contactButton.style.display = "none";
   }
 
@@ -85,6 +94,21 @@ petInfoList.forEach(function (petInfo) {
 // Add an event listener to the "Delete Selected" button
 var deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
 deleteSelectedBtn.addEventListener("click", deleteSelectedPets);
+
+// Check if the current logged-in user has any pet data
+var userHasPetData = petInfoList.some(function (pet) {
+  return pet.token === currentUserToken;
+});
+
+// Add an event listener to the "Delete Selected" button if the user has pet data
+if (userHasPetData) {
+  var deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
+  deleteSelectedBtn.addEventListener("click", deleteSelectedPets);
+} else {
+  // Hide the "Delete Selected" button if the user doesn't have any pet data
+  var deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
+  deleteSelectedBtn.style.display = "none";
+}
 
 // Function to handle the "Delete Selected" button click
 function deleteSelectedPets() {

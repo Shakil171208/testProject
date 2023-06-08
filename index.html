@@ -20,7 +20,7 @@
         var token = localStorage.getItem("token");
         if (!token) {
           alert("You need to login first!");
-          window.location.href = "login.html";
+          window.location.href = "index.html";
         } else {
           window.location.href = "pet rescuer.html";
         }
@@ -40,9 +40,11 @@
           <a href="#">How it Works</a>
           <a href="#">Furry Stories</a>
         </div>
-        <div class="navbar-right">
-          <a href="signup.html" class="signup-button">Sign Up</a>
-          <a href="login.html" class="login-button">Log In</a>
+        <div class="navbar-right" id="navbarRight">
+          <span id="loggedInUser" style="display: none"></span>
+          <a href="signup.html" class="signup-button" id="signupButton">Sign Up</a>
+          <a href="login.html" class="login-button" id="loginButton">Log In</a>
+          <a href="signout.html" class="signout-button" id="signoutButton">Sign Out</a>
         </div>
       </div>
     </nav>
@@ -76,5 +78,23 @@
       </div>
       <p>&copy; 2023 Pet Adoption Hub. All rights reserved.</p>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var token = localStorage.getItem("token");
+        var loggedInUsername = localStorage.getItem("loggedInUsername");
+        var signupButton = document.getElementById("signupButton");
+        var loginButton = document.getElementById("loginButton");
+        var loggedInUser = document.getElementById("loggedInUser");
+        var signoutButton = document.getElementById("signoutButton");
+
+        if (token && loggedInUsername) {
+          signupButton.style.display = "none";
+          loginButton.style.display = "none";
+          loggedInUser.style.display = "inline-block";
+          loggedInUser.textContent = "Welcome, " + loggedInUsername;
+          signoutButton.style.display = "inline-block";
+        }
+      });
+    </script>
   </body>
 </html>

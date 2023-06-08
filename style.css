@@ -109,8 +109,16 @@ nav {
   text-decoration: none;
 }
 
+.navbar-right a.signout-button {
+  background-color: #333;
+  color: #fff;
+  padding: 7px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
 .navbar-right a.signup-button:hover,
-.navbar-right a.login-button:hover {
+.navbar-right a.login-button:hover, .navbar-right a.signout-button:hover {
   opacity: 0.8;
 }
 
