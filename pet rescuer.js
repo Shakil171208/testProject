@@ -57,7 +57,7 @@ document.getElementById('petRescuerForm').addEventListener('submit', function(ev
   let id;
   var petInfoList = JSON.parse(localStorage.getItem('petInfoList')) || [];
 
-  petInfoList.length === 0? id=0: id = (petInfoList[petInfoList.length - 1].id) + 1
+  petInfoList.length === 0? id = 0 : id = (petInfoList[petInfoList.length - 1].id) + 1;
 
   var contactInfo = {
     id: id,

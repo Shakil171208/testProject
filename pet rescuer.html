@@ -20,7 +20,7 @@
         var token = localStorage.getItem("token");
         if (!token) {
           alert("You need to login first!");
-          window.location.href = "index.html";
+          window.location.href = "login.html";
         } else {
           window.location.href = "pet rescuer.html";
         }
@@ -44,7 +44,7 @@
           <span id="loggedInUser" style="display: none"></span>
           <a href="signup.html" class="signup-button" id="signupButton">Sign Up</a>
           <a href="login.html" class="login-button" id="loginButton">Log In</a>
-          <a href="signout.html" class="signout-button" id="signoutButton">Sign Out</a>
+          <a href="signout.html" class="signout-button" id="signoutButton" style="display: none;">Sign Out</a>
         </div>
       </div>
     </nav>
