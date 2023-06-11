@@ -1,29 +1,26 @@
 #paginationContainer {
   position: absolute;
   margin: 0 5;
-  right: 610px;
+  right: 667px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-top: 10px;
 }
 
-/* CSS styles for page links */
 .page-links a {
-  display: inline-block; /* Display the page links inline */
-  margin: 0 5px; /* Add some spacing between the page links */
+  display: inline-block; 
+  margin: 0 5px; 
 }
 
 .previous-link,
 .next-link {
-  /* display: flex; */
   justify-content: flex-end;
   font-weight: bold;
   cursor: pointer;
 }
 
 .pagination-link {
-  /* display: inline-block; */
   justify-content: flex-end;
   padding: 8px 12px;
   margin-right: 6px;
@@ -40,7 +37,6 @@
 }
 
 .page-links a.active {
-  /* display: inline-block; */
   margin: 0 5px;
   background-color: #020202;
   color: #fff;

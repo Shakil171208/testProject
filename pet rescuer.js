@@ -2,7 +2,6 @@ function getCurrentUser() {
   var token = localStorage.getItem('token');
   var users = JSON.parse(localStorage.getItem('users'));
 
-  // Find the user with the matching token
   var currentUser = users.find(function(user) {
     return user.token === token;
   });
@@ -16,10 +15,8 @@ function populateFormFields() {
   var emailField = document.getElementById('email');
   var phoneNumberField = document.getElementById('phoneNumber');
 
-  // Retrieve the current user's information from local storage or server
   var currentUser = getCurrentUser(); 
 
-  // Populate the form fields with user information
   if (currentUser) {
     usernameField.value = currentUser.username;
     emailField.value = currentUser.email;
@@ -27,7 +24,6 @@ function populateFormFields() {
   }
 }
 
-// Call the populateFormFields function when the petrescuer.html page loads
 window.addEventListener('load', populateFormFields);
 
 document.getElementById('petRescuerForm').addEventListener('submit', function(event) {
@@ -43,7 +39,6 @@ document.getElementById('petRescuerForm').addEventListener('submit', function(ev
   var petAge = document.getElementById('petAge').value;
   var petDescription = document.getElementById('petDescription').value;
 
-  // Retrieve the current token from local storage
   var token = localStorage.getItem('token');
 
   var contactInfo = {
@@ -92,14 +87,12 @@ function saveContactInfo(token, contactInfo) {
 }
 
 function savePetInfo(petInfo) {
-  var token = localStorage.getItem("token"); // Retrieve the current user's token
+  var token = localStorage.getItem("token"); 
 
   var petInfoList = JSON.parse(localStorage.getItem("petInfoList")) || [];
 
-  // Generate a unique ID for the pet info
   var id = petInfoList.length > 0 ? petInfoList[petInfoList.length - 1].id + 1 : 0;
 
-  // Update the petInfo object with the correct id and token values
   petInfo.id = id;
   petInfo.token = token;
 

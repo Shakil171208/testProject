@@ -2,20 +2,18 @@ var filteredPets = [];
 
 // Function to perform the search based on pet type and pet age
 function performSearch() {
-  // Get the search input values
+
   var typeInput = document.getElementById("searchPetType").value.toLowerCase();
   var ageInput = document.getElementById("searchPetAge").value.toLowerCase();
 
-  // Check if both search fields are empty
   if (typeInput === "" && ageInput === "") {
-    return; // Use the original pet info list
+    return; 
   } else {
-    // Filter the pet info list based on the search criteria
+
     filteredPets = petInfoList.filter(function (petInfo) {
       var petType = petInfo.petType.toLowerCase();
       var petAge = petInfo.petAge.toString().toLowerCase();
 
-      // Check if the pet type and age match the search inputs
       return petType.includes(typeInput) && petAge.includes(ageInput);
     });
   }
@@ -33,16 +31,14 @@ function performSearch() {
     deleteSelectedBtn.style.display = "block";
   }
 
-  // Clear the pet list container
   petListContainer.innerHTML = "";
 
   // Display the filtered pets
   filteredPets.forEach(function (petInfo) {
-    // Create a new pet item element
+
     var petItem = document.createElement("div");
     petItem.classList.add("pet-item");
 
-    // Create elements to display the pet information
     var petName = document.createElement("h2");
     petName.textContent = "Name: " + petInfo.petName;
 
@@ -113,7 +109,6 @@ function performSearch() {
     petItem.appendChild(deleteButton);
     petItem.appendChild(contactButton);
 
-    // Append the pet item to the pet list container
     petListContainer.appendChild(petItem);
   });
 
@@ -126,7 +121,7 @@ function performSearch() {
 // Add an event listener to the search button
 var searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", function () {
-  performSearch(); // Perform the search
+  performSearch(); 
 });
 
 

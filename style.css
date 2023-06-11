@@ -67,7 +67,6 @@ nav {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Example styles for the content section */
 .container h1 {
   font-size: 24px;
   margin: 20px 0;
@@ -92,7 +91,6 @@ nav {
   background-color: #9598f0;
 }
 
-/* Additional styles for Sign Up and Log In links */
 .navbar-right a.signup-button {
   background-color: #ffffff;
   color: #000000;
@@ -146,7 +144,7 @@ body {
 }
 
 .container .content {
-  width: 50%; /* Adjust the width as needed */
+  width: 50%; 
 }
 
 .container .left {
