@@ -116,7 +116,8 @@ nav {
 }
 
 .navbar-right a.signup-button:hover,
-.navbar-right a.login-button:hover, .navbar-right a.signout-button:hover {
+.navbar-right a.login-button:hover,
+.navbar-right a.signout-button:hover {
   opacity: 0.8;
 }
 
@@ -144,7 +145,7 @@ body {
 }
 
 .container .content {
-  width: 50%; 
+  width: 50%;
 }
 
 .container .left {
@@ -166,6 +167,7 @@ body {
 .container p {
   line-height: 1.5;
   margin-bottom: 10px;
+  margin-left: 4px;
 }
 
 footer {
@@ -187,4 +189,56 @@ footer {
 
 .footer-links a:hover {
   text-decoration: underline;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  /* Adjust navbar for smaller screens */
+  .navbar-left,
+  .navbar-right {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .navbar a {
+    margin-right: 5px;
+  }
+
+  /* Adjust container layout for smaller screens */
+  .container .content {
+    width: 80%;
+  }
+
+  .container .left,
+  .container .right {
+    text-align: center;
+    margin-right: 0;
+  }
+
+  .container img {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* Adjust navbar for even smaller screens */
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    margin: 10px 0;
+  }
+
+  .navbar a {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  /* Adjust container layout for even smaller screens */
+  .container .content {
+    width: 90%;
+  }
 }

@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Pet Adoption Management</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var logo = document.querySelector(".logo img");
-        var logoUrl = localStorage.getItem("logoUrl");
-        if (logoUrl) {
-          logo.src = logoUrl;
-        } else {
-          logoUrl = "images/pet.png"; 
-          localStorage.setItem("logoUrl", logoUrl);
-          logo.src = logoUrl;
-        }
-      });
-
-      function checkLogin() {
-        var token = localStorage.getItem("token");
-        if (!token) {
-          alert("You need to login first!");
-          window.location.href = "login.html";
-        } else {
-          window.location.href = "pet rescuer.html";
-        }
+<head>
+  <title>Pet Adoption Management</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var logo = document.querySelector(".logo img");
+      var logoUrl = localStorage.getItem("logoUrl");
+      if (logoUrl) {
+        logo.src = logoUrl;
+      } else {
+        logoUrl = "images/pet.png"; 
+        localStorage.setItem("logoUrl", logoUrl);
+        logo.src = logoUrl;
       }
-    </script>
-  </head>
-  <body>
-    <nav>
-      <div class="navbar">
-        <a href="#" class="logo">
-          <img src="D:\Pet Adoption Management\images\pet.png" alt="Logo" />
-          <span class="logo-text">Pet Adoption Hub</span>
-        </a>
-        <div class="navbar-left">
-          <a href="#" onclick="checkLogin()">Pet Rescuer</a>
-          <a href="findpet.html">Find a Pet</a>
-          <a href="#">How it Works</a>
-          <a href="#">Furry Stories</a>
+    });
+
+    function checkLogin() {
+      var token = localStorage.getItem("token");
+      if (!token) {
+        alert("You need to login first!");
+        window.location.href = "login.html";
+      } else {
+        window.location.href = "pet rescuer.html";
+      }
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a href="#" class="logo">
+        <img src="D:\Pet Adoption Management\images\pet.png" alt="Logo" />
+        <span class="logo-text">Pet Adoption Hub</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto">
+          <a href="#" onclick="checkLogin()" class="nav-link">Pet Rescuer</a>
+          <a href="findpet.html" class="nav-link">Find a Pet</a>
+          <a href="#" class="nav-link">How it Works</a>
+          <a href="#" class="nav-link">Furry Stories</a>
         </div>
         <div class="navbar-right" id="navbarRight">
           <span id="loggedInUser" style="display: none"></span>
@@ -47,54 +52,65 @@
           <a href="signout.html" class="signout-button" id="signoutButton" style="display: none;">Sign Out</a>
         </div>
       </div>
-    </nav>
-    <div class="header-container">
-      <h1>Welcome to Pet Adoption Hub</h1>
     </div>
-    <div class="container">
-      <div class="content left">
-        <img src="images\pet1.avif" alt="Image" />
-      </div>
-      <div class="content right">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          dignissim lectus vel nulla placerat, nec dignissim nisl pellentesque.
-          Proin eget purus vitae ex commodo volutpat a in elit.
-        </p>
-        <p>
-          Sed nec sollicitudin nibh, sit amet elementum urna. Duis euismod
-          pharetra ante nec venenatis. Integer pretium turpis a sagittis tempor.
-          Mauris pharetra dictum ante, eu laoreet erat eleifend sed.
-        </p>
-      </div>
+  </nav>
+  <div class="header-container">
+    <h1>Welcome to Pet Adoption Hub</h1>
+  </div>
+  <div class="container">
+    <div class="content left">
+      <img src="images\pet1.avif" alt="Image" />
     </div>
+    <div class="content right">
+      <p>
+        Did you know that over 1,000 people per hour run a search
+        right here looking to adopt a pet? Pet adoption is quickly
+        becoming the preferred way to find a new dog or cat, and 
+        rightly so, there are many benefits to adopting a pet. Pet 
+        adoption fees are usually much lower than buying from a breeder.
+      </p>
+      <p>
+        You're also likely to find a pet who's already learned a few things. 
+        Adoptable pets are often already housetrained, good with kids, and 
+        do well with other pets. And don't forget the wonderful feeling you 
+        get from saving a life!
+      </p>
+      <p>
+        The rescue professionals posting on our site are experts at matching
+        you with the right pet. Our website even has a "New Pet Alert" 
+        feature to help you narrow things down. Simply tell us what you are 
+        looking for and we'll email you your matches!
+      </p>
+    </div>
+  </div>
 
-    <footer>
-      <div class="footer-links">
-        <a href="#">About Us</a>
-        <a href="#">Contact</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-      <p>&copy; 2023 Pet Adoption Hub. All rights reserved.</p>
-    </footer>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var token = localStorage.getItem("token");
-        var loggedInUsername = localStorage.getItem("loggedInUsername");
-        var signupButton = document.getElementById("signupButton");
-        var loginButton = document.getElementById("loginButton");
-        var loggedInUser = document.getElementById("loggedInUser");
-        var signoutButton = document.getElementById("signoutButton");
+  <footer>
+    <div class="footer-links">
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <p>&copy; 2023 Pet Adoption Hub. All rights reserved.</p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var token = localStorage.getItem("token");
+      var loggedInUsername = localStorage.getItem("loggedInUsername");
+      var signupButton = document.getElementById("signupButton");
+      var loginButton = document.getElementById("loginButton");
+      var loggedInUser = document.getElementById("loggedInUser");
+      var signoutButton = document.getElementById("signoutButton");
 
-        if (token && loggedInUsername) {
-          signupButton.style.display = "none";
-          loginButton.style.display = "none";
-          loggedInUser.style.display = "inline-block";
-          loggedInUser.textContent = "Welcome, " + loggedInUsername;
-          signoutButton.style.display = "inline-block";
-        }
-      });
-    </script>
-  </body>
+      if (token && loggedInUsername) {
+        signupButton.style.display = "none";
+        loginButton.style.display = "none";
+        loggedInUser.style.display = "inline-block";
+        loggedInUser.textContent = "Welcome, " + loggedInUsername;
+        signoutButton.style.display = "inline-block";
+      }
+    });
+  </script>
+</body>
 </html>

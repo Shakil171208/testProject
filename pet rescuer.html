@@ -3,6 +3,10 @@
   <head>
     <title>Pet Rescuer</title>
     <link rel="stylesheet" href="pet rescuer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"
+    />
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var logo = document.querySelector(".logo img");
@@ -28,56 +32,98 @@
     </script>
   </head>
   <body>
-    <nav>
-      <div class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
         <a href="index.html" class="logo">
           <img src="D:\Pet Adoption Management\images\pet.png" alt="Logo" />
           <span class="logo-text">Pet Adoption Hub</span>
         </a>
-        <div class="navbar-left">
-          <a href="#" onclick="checkLogin()">Pet Rescuer</a>
-          <a href="findpet.html">Find a Pet</a>
-          <a href="#">How it Works</a>
-          <a href="#">Furry Stories</a>
-        </div>
-        <div class="navbar-right" id="navbarRight">
-          <span id="loggedInUser" style="display: none"></span>
-          <a href="signup.html" class="signup-button" id="signupButton">Sign Up</a>
-          <a href="login.html" class="login-button" id="loginButton">Log In</a>
-          <a href="signout.html" class="signout-button" id="signoutButton" style="display: none;">Sign Out</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav mx-auto">
+            <a href="#" onclick="checkLogin()" class="nav-link">Pet Rescuer</a>
+            <a href="findpet.html" class="nav-link">Find a Pet</a>
+            <a href="#" class="nav-link">How it Works</a>
+            <a href="#" class="nav-link">Furry Stories</a>
+          </div>
+          <div class="navbar-right" id="navbarRight">
+            <span id="loggedInUser" style="display: none"></span>
+            <a href="signup.html" class="signup-button" id="signupButton"
+              >Sign Up</a
+            >
+            <a href="login.html" class="login-button" id="loginButton"
+              >Log In</a
+            >
+            <a
+              href="signout.html"
+              class="signout-button"
+              id="signoutButton"
+              style="display: none"
+              >Sign Out</a
+            >
+          </div>
         </div>
       </div>
     </nav>
-    <h1>Pet Rescuer Form</h1>
-    <form id="petRescuerForm">
-      <label for="username">Username:</label>
-      <input type="text" id="username" readonly required /><br />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" readonly required /><br />
-
-      <label for="phoneNumber">Phone Number:</label>
-      <input type="tel" id="phoneNumber" readonly required /><br />
-
-      <label for="petName">Pet Name:</label>
-      <input type="text" id="petName" required /><br />
-
-      <label for="petType">Pet Type:</label>
-      <input type="text" id="petType" required /><br />
-
-      <label for="petBreed">Pet Breed:</label>
-      <input type="text" id="petBreed" required /><br />
-
-      <label for="petAge">Pet Age:</label>
-      <input type="number" id="petAge" required /><br />
-
-      <label for="petDescription">Pet Description:</label>
-      <textarea id="petDescription" required></textarea><br />
-
-      <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+      <h1 class="mt-4">Pet Rescuer Form</h1>
+      <form id="petRescuerForm" class="mt-4">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username:</label>
+          <input type="text" id="username" class="form-control" readonly required />
+        </div>
+  
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" id="email" class="form-control" readonly required />
+        </div>
+  
+        <div class="mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number:</label>
+          <input type="tel" id="phoneNumber" class="form-control" readonly required />
+        </div>
+  
+        <div class="mb-3">
+          <label for="petName" class="form-label">Pet Name:</label>
+          <input type="text" id="petName" class="form-control" required />
+        </div>
+  
+        <div class="mb-3">
+          <label for="petType" class="form-label">Pet Type:</label>
+          <input type="text" id="petType" class="form-control" required />
+        </div>
+  
+        <div class="mb-3">
+          <label for="petBreed" class="form-label">Pet Breed:</label>
+          <input type="text" id="petBreed" class="form-control" required />
+        </div>
+  
+        <div class="mb-3">
+          <label for="petAge" class="form-label">Pet Age:</label>
+          <input type="number" id="petAge" class="form-control" required />
+        </div>
+  
+        <div class="mb-3">
+          <label for="petDescription" class="form-label">Pet Description:</label>
+          <textarea id="petDescription" class="form-control" required></textarea>
+        </div>
+  
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
     <script src="pet rescuer.js"></script>
     <script src="utils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var token = localStorage.getItem("token");

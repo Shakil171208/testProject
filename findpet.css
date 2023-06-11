@@ -122,15 +122,6 @@ nav {
   opacity: 0.8;
 }
 
-/* Body styles */
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background-color: #ffffff;
-  align-items: center;
-  justify-content: center;
-}
-
 /* Page title styles */
 h1 {
   font-size: 36px;
@@ -144,12 +135,13 @@ h1 {
 #petListContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content:center;
+  text-align: center;
 }
 
 /* Pet item styles */
 .pet-item {
-  width: 650px;
+  width: 43%;
   padding: 10px;
   margin: 10px;
   border: 1px solid #212121;
@@ -300,29 +292,133 @@ button {
 /* Styling for the Delete Selected button */
 #deleteSelectedBtn {
   position: sticky;
-  bottom: 649px;
-  left: 435px; /* Adjust right value as needed */
-  padding: 8px 16px;
+  bottom: 540px;
+  left: 443px; /* Adjust right value as needed */
+  padding: 7px 14px;
   background-color: #3d3b3b;
   border: none;
   color: white;
   cursor: pointer;
 }
 
-/* Media query for responsiveness */
+/* Responsive Styles */
 @media (max-width: 768px) {
+  /* Navbar Styles */
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    margin: 10px 0;
+  }
+
+  .logo {
+    justify-content: center;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  /* Content Styles */
+  .container {
+    padding: 10px;
+  }
+
+  /* Example styles for the content section */
+  .container h1 {
+    font-size: 20px;
+  }
+
   /* Pet item styles */
   .pet-item {
     width: 100%;
   }
+}
+
+@media (max-width: 576px) {
+  /* Navbar Styles */
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .navbar a {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  .navbar-right a.signup-button,
+  .navbar-right a.login-button,
+  .navbar-right a.signout-button {
+    padding: 5px 10px;
+  }
+
+  /* Content Styles */
+  .container {
+    border-radius: 0;
+  }
+
+  /* Example styles for the content section */
+  .container h1 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  /* Pet list container styles */
+  #petListContainer {
+    justify-content: flex-start;
+  }
+
+  /* Pet item styles */
+  .pet-item {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  /* Edit and delete buttons styles */
+  .pet-item button {
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 5px 10px;
+  }
+
+  /* Modal styles */
+  .modal-content {
+    margin: 10% auto;
+    padding: 10px;
+    width: 90%;
+  }
+
+  /* Contact modal styles */
+  #contactModal .modal-content {
+    max-width: 100%;
+  }
+
+  /* Edit modal styles */
+  #editModal .modal-content {
+    max-width: 100%;
+  }
 
   /* Styling for the Delete Selected button */
   #deleteSelectedBtn {
-    position: sticky;
-    bottom: auto;
-    left: 171px;
+    bottom: 80px;
+    left: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
   }
 }
+
 
 
 

@@ -5,52 +5,78 @@
     <link rel="stylesheet" href="search.css" />
     <link rel="stylesheet" type="text/css" href="findpet.css" />
     <link rel="stylesheet" type="text/css" href="pagination.css" />
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var logo = document.querySelector(".logo img");
-        var logoUrl = localStorage.getItem("logoUrl");
-        if (logoUrl) {
-          logo.src = logoUrl;
-        } else {
-          logoUrl = "images/pet.png"; 
-          localStorage.setItem("logoUrl", logoUrl);
-          logo.src = logoUrl;
-        }
-      });
-
-      function checkLogin() {
-        var token = localStorage.getItem("token");
-        if (!token) {
-          alert("You need to login first!");
-          window.location.href = "login.html";
-        } else {
-          window.location.href = "pet rescuer.html";
-        }
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"
+  />
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var logo = document.querySelector(".logo img");
+      var logoUrl = localStorage.getItem("logoUrl");
+      if (logoUrl) {
+        logo.src = logoUrl;
+      } else {
+        logoUrl = "images/pet.png";
+        localStorage.setItem("logoUrl", logoUrl);
+        logo.src = logoUrl;
       }
-    </script>
-  </head>
-  <body>
-    <nav>
-      <div class="navbar">
-        <a href="index.html" class="logo">
-          <img src="D:\Pet Adoption Management\images\pet.png" alt="Logo" />
-          <span class="logo-text">Pet Adoption Hub</span>
-        </a>
-        <div class="navbar-left">
-          <a href="#" onclick="checkLogin()">Pet Rescuer</a>
-          <a href="findpet.html">Find a Pet</a>
-          <a href="#">How it Works</a>
-          <a href="#">Furry Stories</a>
+    });
+
+    function checkLogin() {
+      var token = localStorage.getItem("token");
+      if (!token) {
+        alert("You need to login first!");
+        window.location.href = "login.html";
+      } else {
+        window.location.href = "pet rescuer.html";
+      }
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a href="index.html" class="logo">
+        <img src="D:\Pet Adoption Management\images\pet.png" alt="Logo" />
+        <span class="logo-text" style="color: #212529;">Pet Adoption Hub</span>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto">
+          <a href="#" onclick="checkLogin()" class="nav-link">Pet Rescuer</a>
+          <a href="findpet.html" class="nav-link">Find a Pet</a>
+          <a href="#" class="nav-link">How it Works</a>
+          <a href="#" class="nav-link">Furry Stories</a>
         </div>
         <div class="navbar-right" id="navbarRight">
           <span id="loggedInUser" style="display: none"></span>
-          <a href="signup.html" class="signup-button" id="signupButton">Sign Up</a>
-          <a href="login.html" class="login-button" id="loginButton">Log In</a>
-          <a href="signout.html" class="signout-button" id="signoutButton" style="display: none;">Sign Out</a>
+          <a href="signup.html" class="signup-button" id="signupButton"
+            >Sign Up</a
+          >
+          <a href="login.html" class="login-button" id="loginButton"
+            >Log In</a
+          >
+          <a
+            href="signout.html"
+            class="signout-button"
+            id="signoutButton"
+            style="display: none"
+            >Sign Out</a
+          >
         </div>
       </div>
-    </nav>
-
+    </div>
+  </nav>
     <div id="searchSection">
       <h2>Search your desired pet!</h2>
       <label for="searchPetType">Pet Type:</label>
@@ -110,6 +136,7 @@
     <script src="findpet.js"></script>
     <script src="pagination.js"></script>
     <script src="utils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var token = localStorage.getItem("token");
